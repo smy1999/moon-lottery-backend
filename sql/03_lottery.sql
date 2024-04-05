@@ -1,17 +1,5 @@
 /*
- Navicat Premium Data Transfer
-
- Source Server         : 127.0.0.1
- Source Server Type    : MySQL
- Source Server Version : 50639
- Source Host           : localhost:3306
- Source Schema         : lottery
-
- Target Server Type    : MySQL
- Target Server Version : 50639
- File Encoding         : 65001
-
- Date: 04/10/2021 08:42:54
+03 RPC Test
 */
 
 create database lottery;
