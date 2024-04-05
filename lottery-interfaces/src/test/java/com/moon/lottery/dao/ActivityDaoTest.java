@@ -24,7 +24,7 @@ import java.util.List;
 @SpringBootTest
 public class ActivityDaoTest {
 
-    private Logger logger = LoggerFactory.getLogger(ActivityDaoTest.class);
+    private final Logger logger = LoggerFactory.getLogger(ActivityDaoTest.class);
 
     @Resource
     private IActivityDao activityDao;

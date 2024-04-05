@@ -1,4 +1,4 @@
-package com.moon.lottery.interfaces;
+package com.moon.lottery;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;

@@ -23,11 +23,11 @@ public class Result implements Serializable {
 
     private String info;
 
-    public Result buildSuccessResult() {
+    public static Result buildSuccessResult() {
         return new Result(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo());
     }
 
-    public Result buildErrorResult() {
+    public static Result buildErrorResult() {
         return new Result(Constants.ResponseCode.UNKNOWN_ERROR.getCode(), Constants.ResponseCode.UNKNOWN_ERROR.getInfo());
     }
 
