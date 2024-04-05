@@ -7,6 +7,7 @@ import com.moon.lottery.rpc.req.ActivityReq;
 import com.moon.lottery.rpc.res.ActivityRes;
 import com.moon.lottery.infrastructure.dao.IActivityDao;
 import com.moon.lottery.infrastructure.po.Activity;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
  * @author: smy1999
  * @date: 2024/4/5
  */
-@Component
+@Service
 public class ActivityBooth implements IActivityBooth {
 
     @Resource
