@@ -6,8 +6,7 @@ import com.moon.lottery.infrastructure.dao.IStrategyDao;
 import com.moon.lottery.infrastructure.dao.IStrategyDetailDao;
 import com.moon.lottery.infrastructure.po.Strategy;
 import com.moon.lottery.infrastructure.po.StrategyDetail;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -16,7 +15,8 @@ import java.util.List;
  * @author: smy1999
  * @date: 2024/4/5
  */
-@Repository
+//@Repository
+@Component
 public class StrategyRepository implements IStrategyRepository {
 
     @Resource

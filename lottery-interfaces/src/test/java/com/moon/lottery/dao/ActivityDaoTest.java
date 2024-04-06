@@ -3,10 +3,9 @@ package com.moon.lottery.dao;
 import com.alibaba.fastjson.JSON;
 import com.moon.lottery.infrastructure.dao.IActivityDao;
 import com.moon.lottery.infrastructure.po.Activity;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,9 +21,8 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class ActivityDaoTest {
-
-    private final Logger logger = LoggerFactory.getLogger(ActivityDaoTest.class);
 
     @Resource
     private IActivityDao activityDao;
@@ -47,7 +45,7 @@ public class ActivityDaoTest {
         activityDao.insertActivity(activity);
         List<Activity> all = activityDao.queryAllActivities();
         for (Activity act : all) {
-            logger.info("测试结果: {}", JSON.toJSONString(act));
+            log.info("测试结果: {}", JSON.toJSONString(act));
         }
     }
 
@@ -55,6 +53,6 @@ public class ActivityDaoTest {
     public void testQuery() {
         Long activityId = 10001L;
         Activity activity = activityDao.queryActivityByActivityId(activityId);
-        logger.info("{}", JSON.toJSONString(activity));
+        log.info("{}", JSON.toJSONString(activity));
     }
 }
