@@ -1,4 +1,4 @@
-package com.moon.lottery.domain.draw;
+package com.moon.lottery.domain.strategy.draw;
 
 import com.moon.lottery.domain.strategy.model.req.DrawReq;
 import com.moon.lottery.domain.strategy.service.draw.AbstractDraw;

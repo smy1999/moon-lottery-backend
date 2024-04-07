@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
  */
 public class Constants {
 
-
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
@@ -46,6 +45,33 @@ public class Constants {
         FAILURE(0, "未中奖"),
         SUCCESS(1, "已中奖"),
         DEFAULT(2, "默认奖");
+
+        private Integer code;
+        private String info;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public enum AwardState {
+
+        WAITING(0, "等待发奖"),
+        SUCCESS(1, "发奖成功"),
+        FAILURE(2, "发奖失败");
+
+        private Integer code;
+        private String info;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public enum AwardType {
+
+        DESC(1, "文字描述"),
+        REDEEM_CODE(2, "兑换码"),
+        COUPON(3, "优惠券"),
+        PHYSICAL(4, "实物奖品");
 
         private Integer code;
         private String info;

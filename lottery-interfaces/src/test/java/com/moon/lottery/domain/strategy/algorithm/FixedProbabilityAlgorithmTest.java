@@ -1,4 +1,4 @@
-package com.moon.lottery.domain.algorithm;
+package com.moon.lottery.domain.strategy.algorithm;
 
 import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.moon.lottery.domain.strategy.model.vo.AwardRateInfo;
@@ -28,7 +28,7 @@ import java.util.List;
 @Slf4j
 public class FixedProbabilityAlgorithmTest {
 
-    @Resource(type=FixedProbabilityAlgorithm.class)
+    @Resource(type= FixedProbabilityAlgorithm.class)
     private BaseAlgorithm algorithm;
 
     @Autowired

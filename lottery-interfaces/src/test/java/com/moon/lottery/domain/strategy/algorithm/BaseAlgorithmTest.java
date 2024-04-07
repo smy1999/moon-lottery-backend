@@ -1,4 +1,4 @@
-package com.moon.lottery.domain.algorithm;
+package com.moon.lottery.domain.strategy.algorithm;
 
 import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.moon.lottery.domain.strategy.model.vo.AwardRateInfo;

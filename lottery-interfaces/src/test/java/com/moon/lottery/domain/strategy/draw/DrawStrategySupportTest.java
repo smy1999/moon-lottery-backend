@@ -1,6 +1,8 @@
-package com.moon.lottery.domain.draw;
+package com.moon.lottery.domain.strategy.draw;
 
+import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.moon.lottery.domain.strategy.service.draw.DrawSupport;
+import com.moon.lottery.infrastructure.po.Award;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
