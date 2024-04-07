@@ -15,4 +15,18 @@ import java.util.List;
 public interface IStrategyDetailDao {
 
     List<StrategyDetail> queryStrategyDetailsByStrategyId(Long strategyId);
+
+    /**
+     * 查询没有剩余的award_id列表
+     * @param strategyId
+     * @return
+     */
+    List<Long> queryNoSurplusAwardIds(Long strategyId);
+
+    /**
+     * 扣减数量
+     * @param awardId
+     * @return
+     */
+    int deductAward(Long awardId);
 }

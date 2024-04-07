@@ -33,7 +33,7 @@ public abstract class BaseAlgorithm implements IAlgorithm {
 
     @Override
     public boolean existsBucket(Long strategyId) {
-        return bucketMap.containsKey(strategyId);
+        return awardRateInfoMap.containsKey(strategyId);
     }
 
 }

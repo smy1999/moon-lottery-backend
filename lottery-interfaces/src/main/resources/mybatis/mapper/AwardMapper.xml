@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moon.lottery.infrastructure.dao.IAwardDao">
+
+
+    <select id="queryAwardByAwardId" resultType="com.moon.lottery.infrastructure.po.Award">
+        SELECT id, award_id, award_type, award_name, award_content,
+               create_time, update_time
+        FROM award
+        WHERE award_id = #{awardId}
+    </select>
+</mapper>

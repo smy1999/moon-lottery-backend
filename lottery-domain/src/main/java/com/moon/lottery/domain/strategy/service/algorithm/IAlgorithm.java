@@ -20,7 +20,6 @@ public interface IAlgorithm {
      */
     Long randomDraw(Long strategyId, List<Long> excludeAwardIds);
 
-
     void initBucket(Long StrategyId, List<AwardRateInfo> awardRateInfoList);
 
     boolean existsBucket(Long strategyId);

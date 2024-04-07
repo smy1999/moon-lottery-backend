@@ -492,4 +492,18 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;
 
 
-
+-- Test AbstractDraw Initialization
+USE lottery;
+BEGIN;
+INSERT INTO `strategy` VALUES (2, 10002, 'test02', 2, 1, NULL, '', '2021-09-25 08:15:52', '2021-09-25 08:15:52');
+INSERT INTO `strategy_detail` VALUES (6, 10002, '6', 'CHANNEL', 10, 0, 0.05, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (7, 10002, '7', 'GUCCI', 20, 20, 0.15, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (8, 10002, '8', 'LV', 50, 50, 0.20, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (9, 10002, '9', 'BV', 100, 79, 0.25, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (10, 10002, '10', 'YSL', 500, 390, 0.35, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `award` VALUES (6, 6, 1, 'CHANNEL', 'Code', '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `award` VALUES (7, 7, 1, 'GUCCI', 'Code', '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `award` VALUES (8, 8, 1, 'LV', 'Code', '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `award` VALUES (9, 9, 1, 'BV', 'Code', '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `award` VALUES (10, 10, 1, 'YSL', 'Code', '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+COMMIT;

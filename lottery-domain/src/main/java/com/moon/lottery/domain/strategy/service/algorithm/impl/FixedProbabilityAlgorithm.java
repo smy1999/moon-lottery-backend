@@ -38,6 +38,11 @@ public class FixedProbabilityAlgorithm extends BaseAlgorithm {
         bucketMap.put(strategyId, bucket);
     }
 
+    @Override
+    public boolean existsBucket(Long strategyId) {
+        return super.existsBucket(strategyId) && bucketMap.containsKey(strategyId);
+    }
+
     /**
      * 利用bucket抽奖
      * @param strategyId
