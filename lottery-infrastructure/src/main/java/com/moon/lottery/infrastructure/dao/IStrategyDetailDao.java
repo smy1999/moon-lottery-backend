@@ -29,4 +29,6 @@ public interface IStrategyDetailDao {
      * @return
      */
     int deductAward(Long awardId);
+
+    void insertStrategyDetailList(List<StrategyDetail> strategyDetailList);
 }

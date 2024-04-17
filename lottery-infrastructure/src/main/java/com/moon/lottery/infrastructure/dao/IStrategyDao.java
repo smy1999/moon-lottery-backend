@@ -12,4 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface IStrategyDao {
 
     Strategy queryStrategyByStrategyId(Long strategyId);
+
+    void insertStrategy(Strategy strategy);
 }

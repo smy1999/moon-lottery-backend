@@ -3,6 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.moon.lottery.infrastructure.dao.IStrategyDetailDao">
+    <insert id="insertStrategyDetailList">
+        INSERT INTO strategy_detail (strategy_id, award_id, award_name, award_count, award_surplus_count,
+                                     award_rate, create_time, update_time)
+        VALUES
+        <foreach collection="strategyDetailList" item="detail" separator=",">
+            (
+            #{detail.strategyId},
+            #{detail.awardId},
+            #{detail.awardName},
+            #{detail.awardCount},
+            #{detail.awardSurplusCount},
+            #{detail.awardRate},
+            #{detail.createTime},
+            #{detail.updateTime}
+            )
+        </foreach>
+
+
+
+
+
+
+    </insert>
     <update id="deductAward">
         UPDATE strategy_detail
         SET award_surplus_count = award_surplus_count - 1
