@@ -1,5 +1,6 @@
 package com.moon.lottery.infrastructure.dao;
 
+import com.moon.lottery.domain.activity.model.vo.AlterStateVO;
 import com.moon.lottery.infrastructure.po.Activity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -19,4 +20,6 @@ public interface IActivityDao {
     Activity queryActivityByActivityId(Long activityId);
 
     List<Activity> queryAllActivities();
+
+    Integer alterState(AlterStateVO alterStateVO);
 }

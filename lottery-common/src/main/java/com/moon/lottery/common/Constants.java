@@ -76,4 +76,22 @@ public class Constants {
         private Integer code;
         private String info;
     }
+
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public enum ActivityState {
+        EDIT(1, "Edit"),
+        ARRAIGNMENT(2, "Arraignment"),
+        REVOKE(3, "Revoke"),
+        PASS(4, "Pass"),
+        DOING(5, "Doing"),
+        REFUSE(6, "Refuse"),
+        CLOSE(7, "Close"),
+        OPEN(8, "Open");
+
+        private Integer code;
+        private String info;
+    }
 }

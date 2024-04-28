@@ -13,6 +13,12 @@
         (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
          #{stockCount}, #{takeCount}, #{state}, #{creator}, #{createTime}, #{updateTime})
     </insert>
+    <update id="alterState">
+        UPDATE activity
+        SET state = #{afterState}
+        WHERE activity_id = #{activityId}
+          AND state = #{beforeState}
+    </update>
 
     <select id="queryActivityByActivityId" resultType="com.moon.lottery.infrastructure.po.Activity">
         SELECT id, activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
