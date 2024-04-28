@@ -1,8 +1,8 @@
 package com.moon.lottery.domain.strategy.service.draw;
 
 import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
+import com.moon.lottery.domain.strategy.model.vo.AwardBriefVO;
 import com.moon.lottery.domain.strategy.repository.IStrategyRepository;
-import com.moon.lottery.infrastructure.po.Award;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +23,7 @@ public class DrawSupport extends DrawConfig {
         return strategyRepository.queryStrategyRichByStrategyId(strategyId);
     }
 
-    protected Award queryAwardByAwardId(Long awardId) {
+    protected AwardBriefVO queryAwardByAwardId(Long awardId) {
         return strategyRepository.queryAwardByAwardId(awardId);
     }
 

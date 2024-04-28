@@ -4,12 +4,8 @@ import com.moon.lottery.common.Constants;
 import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.moon.lottery.domain.strategy.model.req.DrawReq;
 import com.moon.lottery.domain.strategy.model.res.DrawRes;
-import com.moon.lottery.domain.strategy.model.vo.AwardRateInfo;
-import com.moon.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import com.moon.lottery.domain.strategy.model.vo.*;
 import com.moon.lottery.domain.strategy.service.algorithm.IAlgorithm;
-import com.moon.lottery.infrastructure.po.Award;
-import com.moon.lottery.infrastructure.po.Strategy;
-import com.moon.lottery.infrastructure.po.StrategyDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -32,9 +28,9 @@ public abstract class AbstractDraw extends DrawSupport implements IDrawExec {
         StrategyRich strategyRich = super.queryStrategyRichByStrategyId(strategyId);
 
         // 2. 检查是否初始化
-        Strategy strategy = strategyRich.getStrategy();
+        StrategyBriefVO strategy = strategyRich.getStrategy();
         Integer strategyMode = strategy.getStrategyMode();
-        List<StrategyDetail> strategyDetails = strategyRich.getStrategyDetailList();
+        List<StrategyDetailBriefVO> strategyDetails = strategyRich.getStrategyDetailList();
         this.checkAndInitAlgorithm(strategyId, strategyMode, strategyDetails);
 
         // 3. 获取排除列表
@@ -48,7 +44,7 @@ public abstract class AbstractDraw extends DrawSupport implements IDrawExec {
         return this.buildDrawResult(strategyId, req.getUId(), awardId);
     }
 
-    private void checkAndInitAlgorithm(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetailList) {
+    private void checkAndInitAlgorithm(Long strategyId, Integer strategyMode, List<StrategyDetailBriefVO> strategyDetailList) {
 
         // 动态获取某个实现类
         IAlgorithm algorithm = algorithmMap.get(strategyMode);
@@ -82,7 +78,7 @@ public abstract class AbstractDraw extends DrawSupport implements IDrawExec {
             return new DrawRes(strategyId, uId, Constants.DrawState.FAILURE.getCode());
         }
         // 抽中了
-        Award award = super.queryAwardByAwardId(awardId);
+        AwardBriefVO award = super.queryAwardByAwardId(awardId);
         DrawAwardInfo drawAwardInfo = new DrawAwardInfo();
         BeanUtils.copyProperties(award, drawAwardInfo);
         log.info("已中奖 用户: {}, 策略: {}, 奖品: {} {}", uId, strategyId, awardId, drawAwardInfo.getAwardName());

@@ -2,9 +2,9 @@ package com.moon.lottery.domain.strategy.algorithm;
 
 import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.moon.lottery.domain.strategy.model.vo.AwardRateInfo;
+import com.moon.lottery.domain.strategy.model.vo.StrategyDetailBriefVO;
 import com.moon.lottery.domain.strategy.repository.IStrategyRepository;
 import com.moon.lottery.domain.strategy.service.algorithm.impl.FixedProbabilityAlgorithm;
-import com.moon.lottery.infrastructure.po.StrategyDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +40,7 @@ public class BaseAlgorithmTest {
 
         Long strategyId = 10001L;
         StrategyRich strategyRich = strategyRepository.queryStrategyRichByStrategyId(strategyId);
-        List<StrategyDetail> details = strategyRich.getStrategyDetailList();
+        List<StrategyDetailBriefVO> details = strategyRich.getStrategyDetailList();
 
         List<AwardRateInfo> awardRateInfoList = new ArrayList<>();
         details.forEach(detail -> {
@@ -61,7 +61,7 @@ public class BaseAlgorithmTest {
         boolean b1 = algorithm.existsBucket(strategyId);
 
         StrategyRich strategyRich = strategyRepository.queryStrategyRichByStrategyId(strategyId);
-        List<StrategyDetail> details = strategyRich.getStrategyDetailList();
+        List<StrategyDetailBriefVO> details = strategyRich.getStrategyDetailList();
 
         List<AwardRateInfo> awardRateInfoList = new ArrayList<>();
         details.forEach(detail -> {

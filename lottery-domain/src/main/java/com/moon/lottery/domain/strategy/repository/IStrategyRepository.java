@@ -1,7 +1,7 @@
 package com.moon.lottery.domain.strategy.repository;
 
 import com.moon.lottery.domain.strategy.model.aggregates.StrategyRich;
-import com.moon.lottery.infrastructure.po.Award;
+import com.moon.lottery.domain.strategy.model.vo.AwardBriefVO;
 
 import java.util.List;
 
@@ -14,19 +14,15 @@ public interface IStrategyRepository {
 
     StrategyRich queryStrategyRichByStrategyId(Long strategyId);
 
-    Award queryAwardByAwardId(Long awardId);
+    AwardBriefVO queryAwardByAwardId(Long awardId);
 
     /**
      * 查询没有剩余的award_id列表
-     * @param strategyId
-     * @return
      */
     List<Long> queryNoSurplusAwardIds(Long strategyId);
 
     /**
      * 根据影响行数,判断是否扣减成功
-     * @param awardId
-     * @return
      */
     boolean deductAward(Long awardId);
 }

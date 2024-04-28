@@ -1,21 +1,20 @@
-package com.moon.lottery.infrastructure.po;
+package com.moon.lottery.domain.strategy.model.vo;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 /**
  * @description:
  * @author: smy1999
- * @date: 2024/4/5
+ * @date: 2024/4/28
  */
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Strategy {
-
-    private Long id;
+public class StrategyBriefVO {
 
     private Long strategyId;
 
@@ -28,9 +27,4 @@ public class Strategy {
     private LocalDateTime grantDate;
 
     private String extInfo;
-
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
-
 }

@@ -1,12 +1,9 @@
 package com.moon.lottery.domain.strategy.model.aggregates;
 
 
-import com.moon.lottery.infrastructure.po.StrategyDetail;
-import com.moon.lottery.infrastructure.po.Strategy;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.moon.lottery.domain.strategy.model.vo.StrategyBriefVO;
+import com.moon.lottery.domain.strategy.model.vo.StrategyDetailBriefVO;
+import lombok.*;
 
 import java.util.List;
 
@@ -18,13 +15,12 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class StrategyRich {
 
     private Long StrategyId;
 
-    private Strategy strategy;
+    private StrategyBriefVO strategy;
 
-    private List<StrategyDetail> strategyDetailList;
+    private List<StrategyDetailBriefVO> strategyDetailList;
 }
