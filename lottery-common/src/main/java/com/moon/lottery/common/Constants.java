@@ -94,4 +94,10 @@ public class Constants {
         private Integer code;
         private String info;
     }
+
+    public enum Ids {
+        SNOWFLAKE,
+        SHORTCODE,
+        NUMERIC
+    }
 }
