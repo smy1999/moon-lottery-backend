@@ -3,7 +3,7 @@ package com.moon.lottery.domain.activity.stateflow;
 import com.moon.lottery.BaseTest;
 import com.moon.lottery.common.Constants;
 import com.moon.lottery.common.Result;
-import com.moon.lottery.domain.activity.service.stateflow.ArraignmentState;
+import com.moon.lottery.domain.activity.service.stateflow.event.ArraignmentState;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
