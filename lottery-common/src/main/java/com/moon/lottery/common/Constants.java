@@ -19,7 +19,8 @@ public class Constants {
         SUCCESS("0000", "Success."),
         UNKNOWN_ERROR("0001", "Unknown error."),
         ILLEGAL_PARAMETER("0002", "Illegal parameter."),
-        INDEX_DUPLICATE("0003", "Index duplicate.");
+        INDEX_DUPLICATE("0003", "Index duplicate."),
+        NO_UPDATE("0004", "SQL no update.");
 
         private String code;
         private String info;

@@ -30,7 +30,11 @@ public class Activity {
 
     private Integer stockCount;
 
+    private Integer stockSurplusCount;
+
     private Integer takeCount;
+
+    private Long strategyId;
 
     private Integer state;
 

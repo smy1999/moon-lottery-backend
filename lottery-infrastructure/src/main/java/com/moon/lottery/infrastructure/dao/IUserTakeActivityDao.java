@@ -1,6 +1,6 @@
 package com.moon.lottery.infrastructure.dao;
 
-import cn.bugstack.middleware.db.router.annotation.DBRouter;
+import com.moon.middleware.db.router.annotation.DBRouter;
 import com.moon.lottery.infrastructure.po.UserTakeActivity;
 import org.apache.ibatis.annotations.Mapper;
 

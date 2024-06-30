@@ -20,9 +20,16 @@
           AND state = #{beforeState}
     </update>
 
+    <update id="subtractActivityStock">
+        UPDATE activity
+        SET stock_surplus_count = stock_surplus_count - 1
+        WHERE activity_id = #{activityId}
+          AND stock_surplus_count > 0
+    </update>
+
     <select id="queryActivityByActivityId" resultType="com.moon.lottery.infrastructure.po.Activity">
         SELECT id, activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-               stock_count, take_count, state, creator, create_time, update_time
+               stock_count, stock_surplus_count, take_count, strategy_id, state, creator, create_time, update_time
         FROM activity
         WHERE activity_id = #{activityId}
     </select>

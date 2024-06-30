@@ -1,8 +1,6 @@
 package com.moon.lottery.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -12,8 +10,8 @@ import java.io.Serializable;
  * @date: 2024/4/5
  */
 
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class Result implements Serializable {
 
@@ -22,6 +20,10 @@ public class Result implements Serializable {
     private String code;
 
     private String info;
+
+    public static Result buildResult(Constants.ResponseCode responseCode) {
+        return new Result(responseCode.getCode(), responseCode.getInfo());
+    }
 
     public static Result buildResult(String code, String info) {
         return new Result(code, info);

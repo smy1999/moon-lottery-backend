@@ -48,3 +48,8 @@ dubbo:
     port: 20880
   scan:
     base-packages: com.moon.lottery.rpc
+
+logging:
+  level:
+    com.moon.lottery.infrastructure.dao: debug
+    com.moon.middleware.db: debug
