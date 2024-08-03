@@ -6,7 +6,11 @@ import com.moon.lottery.common.Result;
 import com.moon.lottery.domain.activity.model.req.PartakeReq;
 import com.moon.lottery.domain.activity.model.res.PartakeResult;
 import com.moon.lottery.domain.activity.model.vo.ActivityBillVO;
+import com.moon.lottery.domain.support.ids.IIdGenerator;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @description:
@@ -16,10 +20,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class BaseActivityPartake extends ActivityPartakeSupport implements IActivityPartake {
 
+    @Resource
+    private Map<Constants.Ids, IIdGenerator> idGeneratorMap;
+
     @Override
     public PartakeResult doPartake(PartakeReq req) {
 
         log.info("Partake activity begin, activityId: {}, uId: {}", req.getActivityId(), req.getActivityId());
+
+        // todo
+        // 1. 查询是否存在未执行抽奖领取活动单【user_take_activity 存在 state = 0，领取了但抽奖过程失败的，可以直接返回领取结果继续抽奖】
+        UserTakeActivityVO userTakeActivityVO = this.queryNoConsumedTakeActivityOrder(req.getActivityId(), req.getuId());
+        if (null != userTakeActivityVO) {
+            return buildPartakeResult(userTakeActivityVO.getStrategyId(), userTakeActivityVO.getTakeId());
+        }
 
         // 1. 查询活动账单
         ActivityBillVO activityBillVO = super.queryActivityBill(req);
@@ -37,16 +51,15 @@ public abstract class BaseActivityPartake extends ActivityPartakeSupport impleme
         }
 
         // 4. 领取活动信息(活动信息写入用户表)
-        Result grab = this.grabActivity(req, activityBillVO);
+        Long takeId = idGeneratorMap.get(Constants.Ids.SNOWFLAKE).nextId();
+        Result grab = this.grabActivity(req, activityBillVO, takeId);
         if (!Constants.ResponseCode.SUCCESS.getCode().equals(grab.getCode())) {
             return new PartakeResult(grab.getCode(), grab.getInfo());
         }
         // 5. 封装结果
-        PartakeResult partakeResult = new PartakeResult(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo());
-        partakeResult.setStrategyId(activityBillVO.getStrategyId());
-        log.info("Partake activity end, activityId: {}, uId: {}, partakeResult: {}", req.getActivityId(), req.getActivityId(), JSON.toJSONString(partakeResult));
+        log.info("Partake activity end, activityId: {}, uId: {}, takeId: {}", req.getActivityId(), req.getActivityId(), takeId);
+        return this.buildPartakeResult(activityBillVO.getStrategyId(), takeId);
 
-        return partakeResult;
     }
 
     /**
@@ -66,9 +79,26 @@ public abstract class BaseActivityPartake extends ActivityPartakeSupport impleme
 
     /**
      * 用户领取活动,用户信息写入用户表
+     *
      * @param req
      * @param activityBillVO
+     * @param takeId
      * @return
      */
-    protected abstract Result grabActivity(PartakeReq req, ActivityBillVO activityBillVO);
+    protected abstract Result grabActivity(PartakeReq req, ActivityBillVO activityBillVO, Long takeId);
+
+
+    /**
+     * 封装结果
+     *
+     * @param strategyId
+     * @param takeId
+     * @return
+     */
+    private PartakeResult buildPartakeResult(Long strategyId, Long takeId) {
+        PartakeResult partakeResult = new PartakeResult(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo());
+        partakeResult.setTakeId(takeId);
+        partakeResult.setStrategyId(strategyId);
+        return partakeResult;
+    }
 }

@@ -75,7 +75,7 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
     }
 
     @Override
-    protected Result grabActivity(PartakeReq req, ActivityBillVO activityBillVO) {
+    protected Result grabActivity(PartakeReq req, ActivityBillVO activityBillVO, Long takeId) {
         try {
             dbRouter.doRouter(String.valueOf(req.getUId()));
             return transactionTemplate.execute(status -> {
@@ -92,8 +92,6 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
 
                     // 记录活动领取信息
                     // 插入 user_take_activity 表
-                    Long takeId = idGeneratorMap.get(Constants.Ids.SNOWFLAKE).nextId();
-
                     userTakeActivityRepository.takeActivity(req.getUId(), takeId, req.getActivityId(), activityBillVO.getActivityName(), req.getPartakeDate(), activityBillVO.getTakeCount(), activityBillVO.getUserTakeLeftCount());
 
                 } catch (DuplicateFormatFlagsException e) {
